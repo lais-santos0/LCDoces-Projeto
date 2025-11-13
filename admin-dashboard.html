@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Admin - LC Doces Caseiros</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dashboard-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-header">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Imagem%20do%20WhatsApp%20de%202025-10-25%20%C3%A0%28s%29%2015.03.48_98b46e16-tdNvUulrMOBwUxi6PhkeKk0PiKbCgM.jpg" alt="LC Doces" class="sidebar-logo">
+                <span class="admin-badge">ADMIN</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" onclick="showAdminSection('pedidos')">
+                    📦 Pedidos
+                </a>
+                <a href="admin-produtos.html" class="nav-item">
+                    🍰 Produtos
+                </a>
+                <a href="#" class="nav-item" onclick="showAdminSection('clientes')">
+                    👥 Clientes
+                </a>
+                <a href="#" class="nav-item" onclick="showAdminSection('relatorios')">
+                    📊 Relatórios
+                </a>
+                <a href="index.html" class="nav-item">
+                    🏠 Voltar à Loja
+                </a>
+                <a href="#" class="nav-item logout" onclick="logout()">
+                    🚪 Sair
+                </a>
+            </nav>
+        </aside>
+
+        <main class="dashboard-main">
+            <div class="dashboard-header">
+                <h1 class="dashboard-title">Painel Administrativo</h1>
+                <p class="dashboard-subtitle">Gerencie sua doceria</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">📦</div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="total-orders">0</div>
+                        <div class="stat-label">Pedidos Hoje</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">💰</div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="total-revenue">R$ 0,00</div>
+                        <div class="stat-label">Faturamento</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="total-customers">0</div>
+                        <div class="stat-label">Clientes</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🍰</div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="total-products">21</div>
+                        <div class="stat-label">Produtos</div>
+                    </div>
+                </div>
+            </div>
+
+            <section id="pedidos-admin-section" class="dashboard-section">
+                <h2 class="section-heading">Pedidos Recentes</h2>
+                <div id="admin-orders-list" class="admin-orders-list">
+                    <div class="empty-state">
+                        <div class="empty-icon">📦</div>
+                        <p>Nenhum pedido registrado ainda</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="produtos-admin-section" class="dashboard-section" style="display: none;">
+                <h2 class="section-heading">Gerenciar Produtos</h2>
+                <p class="section-info">Os produtos são gerenciados no arquivo script.js</p>
+            </section>
+
+            <section id="clientes-admin-section" class="dashboard-section" style="display: none;">
+                <h2 class="section-heading">Clientes Cadastrados</h2>
+                <div id="customers-list" class="customers-list">
+                    <div class="empty-state">
+                        <div class="empty-icon">👥</div>
+                        <p>Nenhum cliente cadastrado ainda</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="relatorios-admin-section" class="dashboard-section" style="display: none;">
+                <h2 class="section-heading">Relatórios</h2>
+                <div class="reports-grid">
+                    <div class="report-card">
+                        <h3>Produtos Mais Vendidos</h3>
+                        <div id="top-products">
+                            <p class="text-muted">Dados insuficientes</p>
+                        </div>
+                    </div>
+                    <div class="report-card">
+                        <h3>Vendas por Categoria</h3>
+                        <div id="category-sales">
+                            <p class="text-muted">Dados insuficientes</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="auth.js"></script>
+    <script src="admin-dashboard.js"></script>
+</body>
+</html>

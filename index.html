@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LC Doces Caseiros - Doces Feitos com Amor</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Adicionando logo oficial da LC Doces -->
+                <div class="logo">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Imagem%20do%20WhatsApp%20de%202025-10-25%20%C3%A0%28s%29%2015.03.48_98b46e16-tdNvUulrMOBwUxi6PhkeKk0PiKbCgM.jpg" alt="LC Doces Caseiros" class="logo-image">
+                </div>
+                
+                <nav class="nav">
+                    <button class="nav-btn active" onclick="scrollToSection('produtos')">Produtos</button>
+                    <button class="nav-btn" onclick="scrollToSection('informacoes')">Informações</button>
+                </nav>
+                
+                <!-- Adicionando botão de login e atualizando links sociais e adicionando carrinho -->
+                <div class="social-links">
+                    <a href="login.html" class="social-icon" aria-label="Login">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/l_cdocescaseiros?igsh=MXRuZDhrd280Mnc3bA==" target="_blank" class="social-icon" aria-label="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                    <a href="https://wa.me/5583988066233" target="_blank" class="social-icon" aria-label="WhatsApp">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                        </svg>
+                    </a>
+                    <button class="cart-btn" onclick="toggleCart()" aria-label="Carrinho de compras">
+                        🛒
+                        <span class="cart-count" id="cart-count">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Adicionando painel lateral do carrinho -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h2>Seu Carrinho</h2>
+            <button class="cart-close" onclick="toggleCart()">✕</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <p class="cart-empty">Seu carrinho está vazio</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cart-total">R$ 0,00</span>
+            </div>
+            <button class="btn-checkout" onclick="checkout()">Finalizar Pedido</button>
+        </div>
+    </div>
+    <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero-title">
+                Doces Feitos com <span class="highlight">Amor</span>
+            </h1>
+            <p class="hero-subtitle">
+                Descubra nossa coleção de doces caseiros artesanais, feitos com ingredientes de qualidade e muito carinho para adoçar seus momentos especiais.
+            </p>
+            <button class="btn-primary" onclick="scrollToSection('produtos')">
+                Explorar Produtos
+            </button>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="produtos" class="products">
+        <div class="container">
+            <h2 class="section-title">Nossa Seleção</h2>
+            <p class="section-subtitle">
+                Explore nossas categorias de doces especialmente selecionadas para você
+            </p>
+            
+            <div class="tabs">
+                <button class="tab active" onclick="changeCategory('destaques')">Destaques</button>
+                <button class="tab" onclick="changeCategory('mais-pedidos')">Mais Pedidos</button>
+                <button class="tab" onclick="changeCategory('classicos')">Clássicos</button>
+                <button class="tab" onclick="changeCategory('gourmet')">Gourmet</button>
+            </div>
+
+            <div class="products-grid" id="products-grid">
+                <!-- Products will be loaded here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="informacoes" class="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="about-icon">👩‍🍳</div>
+                    <h3 class="about-title">Quem Somos</h3>
+                    <p class="about-text">
+                        A LC Doces Caseiros nasceu do amor pela confeitaria artesanal. Cada doce é preparado com ingredientes selecionados e muito carinho, mantendo receitas tradicionais e criando novos sabores especiais.
+                    </p>
+                </div>
+                
+                <!-- Atualizando endereço real -->
+                <div class="about-card">
+                    <div class="about-icon">📍</div>
+                    <h3 class="about-title">Onde Estamos</h3>
+                    <p class="about-text">
+                        Avenida São Judas Tadeu, 905<br>
+                        João Pessoa - PB<br>
+                        Atendimento: Seg a Sex, 9h às 18h<br>
+                        Sábados: 9h às 14h
+                    </p>
+                </div>
+                
+                <!-- Atualizando informações de contato reais -->
+                <div class="about-card">
+                    <div class="about-icon">📞</div>
+                    <h3 class="about-title">Contato</h3>
+                    <p class="about-text">
+                        WhatsApp: (83) 98806-6233<br>
+                        Email: lcdocescaseiros2020@gmail.com<br>
+                        Instagram: @l_cdocescaseiros<br>
+                        Faça sua encomenda!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Modal -->
+    <div class="product-modal" id="product-modal">
+        <div class="product-modal-content">
+            <div class="product-modal-header">
+                <img id="modal-image" src="/placeholder.svg" alt="" class="product-modal-image">
+                <button class="product-modal-close" onclick="closeProductModal()">✕</button>
+            </div>
+            <div class="product-modal-body">
+                <h2 id="modal-title" class="product-modal-title"></h2>
+                <span id="modal-category" class="product-modal-category"></span>
+                <p id="modal-description" class="product-modal-description"></p>
+                
+                <div class="product-modal-details">
+                    <h3>📝 Detalhes do Produto</h3>
+                    <p id="modal-details"></p>
+                </div>
+
+                <div class="product-modal-price-section">
+                    <div class="product-modal-price-info">
+                        <span class="product-modal-price-label">Preço</span>
+                        <div>
+                            <span id="modal-price" class="product-modal-price"></span>
+                            <span id="modal-unit" class="product-modal-unit"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-modal-actions">
+                    <button class="btn-modal-add" onclick="addToCartFromModal()">
+                        🛒 Adicionar ao Carrinho
+                    </button>
+                    <button class="btn-modal-whatsapp" onclick="orderViaWhatsAppFromModal()">
+                        💬
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div class="logo-icon">🧁</div>
+                        <span class="footer-brand">LC Doces Caseiros</span>
+                    </div>
+                    <p class="footer-text">
+                        Doces feitos com amor e qualidade para adoçar seus momentos.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-heading">Links Rápidos</h4>
+                    <ul class="footer-links">
+                        <li><a href="#produtos">Produtos</a></li>
+                        <li><a href="#informacoes">Sobre Nós</a></li>
+                        <li><a href="#informacoes">Contato</a></li>
+                        <li><a href="https://wa.me/5583988066233" target="_blank">Fazer Pedido</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Removendo Facebook e TikTok, mantendo apenas Instagram e WhatsApp -->
+                <div class="footer-section">
+                    <h4 class="footer-heading">Redes Sociais</h4>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/l_cdocescaseiros?igsh=MXRuZDhrd280Mnc3bA==" target="_blank" class="footer-social-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                            Instagram
+                        </a>
+                        <a href="https://wa.me/5583988066233" target="_blank" class="footer-social-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                            </svg>
+                            WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 LC Doces Caseiros. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
